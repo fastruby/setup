@@ -80,11 +80,17 @@ println "Installing Postgres..."
 println "Installing Redis..."
   brew_install_or_upgrade 'redis'
 
+println "Installing MySQL..."
+  brew_install_or_upgrade 'mysql'
+
 println "Installing ImageMagick, to crop and resize images..."
   brew_install_or_upgrade 'imagemagick'
 
 println "Installing QT, used by Capybara Webkit for integration testing..."
   brew_install_or_upgrade 'qt'
+
+println "Installing ChromeDriver, to drive Chrome via Selenium..."
+  brew_install_or_upgrade 'chromedriver'
 
 node_version="0.10"
 
