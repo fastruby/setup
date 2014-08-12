@@ -22,8 +22,9 @@ The script will install:
 * ruby-2.1.2
 * nvm
 * qt
+* chromedriver
 * heroku-toolbelt
 
 ## Contributions
 
-Please fork this repository and send a pull request with the changes. Thanks! 
+Please fork this repository and send a pull request with the changes. Thanks!
