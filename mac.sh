@@ -92,7 +92,7 @@ println "Installing NVM, Node.js, and NPM, for running apps and installing JavaS
 if ! command -v rvm &>/dev/null; then
 
   println "Installing rvm, to change Ruby versions..."
-  curl -sSL https://get.rvm.io | bash -s stable --ruby
+  curl -sSL https://get.rvm.io | bash -s stable --ruby --auto-dotfiles
   source ~/.rvm/scripts/rvm
 
 else
