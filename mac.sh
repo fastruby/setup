@@ -4,26 +4,13 @@ if [[ ! -d "$HOME/.bin/" ]]; then
   mkdir "$HOME/.bin"
 fi
 
-if [ ! -f "$HOME/.zshrc" ]; then
-  touch $HOME/.zshrc
-fi
-
-if [[ ":$PATH:" != *":$HOME/.bin:"* ]]; then
-  printf 'export PATH="$HOME/.bin:$PATH"\n' >> ~/.zshrc
-  export PATH="$HOME/.bin:$PATH"
+if [ ! -f "$HOME/.bashrc" ]; then
+  touch $HOME/.bashrc
 fi
 
 println() {
   printf "%b\n" "$1"
 }
-
-println "Installing oh-my-zsh..."
-curl -L http://install.ohmyz.sh | sh
-
-if [[ -f /etc/zshenv ]]; then
-  println "Fixing OSX zsh environment bug ..."
-    sudo mv /etc/{zshenv,zshrc}
-fi
 
 brew_install_or_upgrade() {
   if brew_is_installed "$1"; then
@@ -61,10 +48,10 @@ if ! command -v brew &>/dev/null; then
   println "The missing package manager for OS X"
     ruby <(curl -fsS https://raw.githubusercontent.com/Homebrew/homebrew/go/install)
 
-  if ! grep -qs "recommended by brew doctor" ~/.zshrc; then
+  if ! grep -qs "recommended by brew doctor" ~/.bashrc; then
     println "Put Homebrew location earlier in PATH..."
-      printf '\n# recommended by brew doctor\n' >> ~/.zshrc
-      printf 'export PATH="/usr/local/bin:$PATH"\n' >> ~/.zshrc
+      printf '\n# recommended by brew doctor\n' >> ~/.bashrc
+      printf 'export PATH="/usr/local/bin:$PATH"\n' >> ~/.bashrc
       export PATH="/usr/local/bin:$PATH"
   fi
 else
@@ -91,9 +78,9 @@ node_version="0.10"
 println "Installing NVM, Node.js, and NPM, for running apps and installing JavaScript packages..."
   brew_install_or_upgrade 'nvm'
 
-  if ! grep -qs 'source $(brew --prefix nvm)/nvm.sh' ~/.zshrc; then
-    printf 'export PATH="$PATH:/usr/local/lib/node_modules"\n' >> ~/.zshrc
-    printf 'source $(brew --prefix nvm)/nvm.sh\n' >> ~/.zshrc
+  if ! grep -qs 'source $(brew --prefix nvm)/nvm.sh' ~/.bashrc; then
+    printf 'export PATH="$PATH:/usr/local/lib/node_modules"\n' >> ~/.bashrc
+    printf 'source $(brew --prefix nvm)/nvm.sh\n' >> ~/.bashrc
   fi
 
   source $(brew --prefix nvm)/nvm.sh
