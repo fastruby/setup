@@ -61,6 +61,12 @@ fi
 println "Updating Homebrew formulas..."
 brew update
 
+println "Installing Brew Cask..."
+  brew_install_or_upgrade 'caskroom/cask/brew-cask'
+
+println "Installing Firefox..."
+  brew cask install firefox
+
 println "Installing Postgres..."
   brew_install_or_upgrade 'postgres' '--no-python'
 
