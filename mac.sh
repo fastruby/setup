@@ -82,6 +82,9 @@ println "Installing Spotify..."
 println "Installing Postgres..."
   brew_install_or_upgrade 'postgres' '--no-python'
 
+println "Installing Postgres.app..."
+  brew cask install postgres
+
 println "Installing Redis..."
   brew_install_or_upgrade 'redis'
 
@@ -96,6 +99,9 @@ println "Installing QT, used by Capybara Webkit for integration testing..."
 
 println "Installing ChromeDriver, to drive Chrome via Selenium..."
   brew_install_or_upgrade 'chromedriver'
+
+println "Installing Git..."
+  brew_install_or_upgrade 'git'
 
 node_version="0.10"
 
