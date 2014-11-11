@@ -67,6 +67,18 @@ println "Installing Brew Cask..."
 println "Installing Firefox..."
   brew cask install firefox
 
+println "Installing Github..."
+  brew cask install github
+
+println "Installing Atom..."
+  brew cask install atom
+
+println "Installing Slack..."
+  brew cask install slack
+
+println "Installing Spotify..."
+  brew cask install spotify
+
 println "Installing Postgres..."
   brew_install_or_upgrade 'postgres' '--no-python'
 
