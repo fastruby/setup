@@ -88,6 +88,9 @@ println "Installing Postgres.app..."
 println "Installing Redis..."
   brew_install_or_upgrade 'redis'
 
+println "Installing PhantomJS..."
+  brew_install_or_upgrade 'phantomjs'
+
 println "Installing MySQL..."
   brew_install_or_upgrade 'mysql'
 
