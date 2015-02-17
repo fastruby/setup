@@ -46,7 +46,7 @@ brew_is_upgradable() {
 
 if ! command -v brew &>/dev/null; then
   println "The missing package manager for OS X"
-    ruby <(curl -fsS https://raw.githubusercontent.com/Homebrew/homebrew/go/install)
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
   if ! grep -qs "recommended by brew doctor" ~/.bashrc; then
     println "Put Homebrew location earlier in PATH..."
