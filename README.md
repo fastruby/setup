@@ -1,9 +1,14 @@
 # Setup
 
 Script to install base environment for Ruby development.
+
+## Ensure write access
+
+```
 sudo chown -R $(whoami):admin /Library/Caches/Homebrew
 sudo chown -R $(whoami):admin /opt/homebrew-cask/
 sudo chown -R $(whoami):admin /usr/local/
+```
 
 ## Install on Mac OS X
 
@@ -27,7 +32,6 @@ The script will install:
 * qt
 * chromedriver
 * heroku-toolbelt
-
 
 ## Contributions
 
