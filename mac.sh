@@ -107,7 +107,7 @@ println "Installing ChromeDriver, to drive Chrome via Selenium..."
 println "Installing Git..."
   brew_install_or_upgrade 'git'
 
-node_version="0.10"
+node_version="0.10.40"
 
 println "Installing NVM, Node.js, and NPM, for running apps and installing JavaScript packages..."
   brew_install_or_upgrade 'nvm'
@@ -138,7 +138,7 @@ println "Upgrading and linking OpenSSL..."
   brew_install_or_upgrade 'openssl'
   brew unlink openssl && brew link openssl --force
 
-ruby_version="2.1.2"
+ruby_version="2.1.7"
 
 println "Installing Ruby $ruby_version..."
   rvm install "$ruby_version"
