@@ -2,6 +2,14 @@
 
 Script to install base environment for Ruby development.
 
+## Ensure write access
+
+```
+sudo chown -R $(whoami):admin /Library/Caches/Homebrew
+sudo chown -R $(whoami):admin /opt/homebrew-cask/
+sudo chown -R $(whoami):admin /usr/local/
+```
+
 ## Install on Mac OS X
 
 ```
@@ -19,7 +27,7 @@ The script will install:
 * postgres
 * redis
 * rvm
-* ruby-2.1.2
+* ruby-2.1.7
 * nvm
 * qt
 * chromedriver
