@@ -69,7 +69,7 @@ println "Installing Firefox..."
   brew cask install firefox
 
 println "Installing Github..."
-  brew cask install github
+  brew cask install github-desktop
 
 println "Installing Atom..."
   brew cask install atom
