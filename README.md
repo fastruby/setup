@@ -2,18 +2,10 @@
 
 Script to install base environment for Ruby development.
 
-## Ensure write access
-
-```
-sudo chown -R $(whoami):admin /Library/Caches/Homebrew
-sudo chown -R $(whoami):admin /opt/homebrew-cask/
-sudo chown -R $(whoami):admin /usr/local/
-```
-
 ## Install on Mac OS X
 
 ```
-./mac.sh
+curl -L https://raw.githubusercontent.com/ombulabs/setup/master/mac.sh | bash
 ```
 
 ## Installed libraries
@@ -31,7 +23,27 @@ The script will install:
 * nvm
 * qt
 * chromedriver
+* github desktop
 * heroku-toolbelt
+* spotify
+* slack
+* firefox
+
+# FAQ
+
+## I get a permissions error. Why?
+
+You may need to update your local libraries directory. 
+
+```
+sudo chown -R $(whoami):admin /Library/Caches/Homebrew
+sudo chown -R $(whoami):admin /opt/homebrew-cask/
+sudo chown -R $(whoami):admin /usr/local/
+```
+
+## But I don't want <application> installed. 
+
+Just remove <application> from https://github.com/ombulabs/setup/blob/master/mac.sh
 
 ## Contributions
 
