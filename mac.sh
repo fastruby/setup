@@ -92,8 +92,8 @@ println "Installing Redis..."
 println "Installing PhantomJS..."
   brew_install_or_upgrade 'phantomjs'
 
-println "Installing MySQL..."
-  brew_install_or_upgrade 'mysql'
+println "Installing MySQL 5.6..."
+  brew_install_or_upgrade 'homebrew/versions/mysql56'
 
 println "Installing ImageMagick, to crop and resize images..."
   brew_install_or_upgrade 'imagemagick'
