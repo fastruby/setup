@@ -41,9 +41,9 @@ sudo chown -R $(whoami):admin /opt/homebrew-cask/
 sudo chown -R $(whoami):admin /usr/local/
 ```
 
-## But I don't want <application> installed. 
+## But I don't want \<application> installed. 
 
-Just remove <application> from https://github.com/ombulabs/setup/blob/master/mac.sh
+Just remove \<application> from https://github.com/ombulabs/setup/blob/master/mac.sh
 
 ## Contributions
 
