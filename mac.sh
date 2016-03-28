@@ -66,6 +66,9 @@ println "Installing Brew Cask..."
   brew_install_or_upgrade 'caskroom/cask/brew-cask'
   brew upgrade brew-cask
 
+println "Installing iTerm2..."
+  brew cask install iterm2
+
 println "Installing Firefox..."
   brew cask install firefox
 
