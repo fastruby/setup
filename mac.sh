@@ -64,6 +64,7 @@ brew update
 println "Installing Brew Cask..."
   brew tap caskroom/cask
   brew_install_or_upgrade 'caskroom/cask/brew-cask'
+  brew upgrade brew-cask
 
 println "Installing Firefox..."
   brew cask install firefox
