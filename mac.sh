@@ -143,7 +143,7 @@ println "Upgrading and linking OpenSSL..."
   brew_install_or_upgrade 'openssl'
   brew unlink openssl && brew link openssl --force
 
-ruby_version="2.1.7"
+ruby_version="2.3.1"
 
 println "Installing Ruby $ruby_version..."
   rvm install "$ruby_version"
