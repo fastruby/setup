@@ -41,9 +41,18 @@ sudo chown -R $(whoami):admin /opt/homebrew-cask/
 sudo chown -R $(whoami):admin /usr/local/
 ```
 
+## I get failure errors. Why?
+
+You have to install Xcode developer tools
+
+```
+xcode-select --install
+```
+
 ## But I don't want \<application> installed. 
 
 Just remove \<application> from https://github.com/ombulabs/setup/blob/master/mac.sh
+
 
 ## Contributions
 
