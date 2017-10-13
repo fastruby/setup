@@ -61,11 +61,6 @@ fi
 println "Updating Homebrew formulas..."
 brew update
 
-println "Installing Brew Cask..."
-  brew tap caskroom/cask
-  brew_install_or_upgrade 'caskroom/cask/brew-cask'
-  brew upgrade brew-cask
-
 println "Installing iTerm2..."
   brew cask install iterm2
 
@@ -153,6 +148,7 @@ println "Updating to latest Rubygems version..."
   gem update --system
 
 println "Configuring Bundler for faster, parallel gem installation..."
+  gem install bundler --no-ri --no-rdoc
   number_of_cores=$(sysctl -n hw.ncpu)
   bundle config --global jobs $((number_of_cores - 1))
 
