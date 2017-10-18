@@ -76,6 +76,9 @@ println "Installing Atom..."
 println "Installing Slack..."
   brew cask install slack
 
+println "Installing Screenhero..."
+  brew cask install screenhero
+
 println "Installing Spotify..."
   brew cask install spotify
 
