@@ -159,4 +159,4 @@ println "Installing Heroku CLI client..."
   brew_install_or_upgrade 'heroku-toolbelt'
 
 println "Installing the heroku-config plugin to pull config variables locally to be used as ENV variables..."
-  heroku plugins:install git://github.com/ddollar/heroku-config.git
+  heroku plugins:install heroku-config
