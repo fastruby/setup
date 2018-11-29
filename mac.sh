@@ -68,16 +68,13 @@ println "Installing Firefox..."
   brew cask install firefox
 
 println "Installing Github..."
-  brew cask install github-desktop
+  brew cask install github
 
 println "Installing Atom..."
   brew cask install atom
 
 println "Installing Slack..."
   brew cask install slack
-
-println "Installing Screenhero..."
-  brew cask install screenhero
 
 println "Installing Spotify..."
   brew cask install spotify
@@ -95,8 +92,7 @@ println "Installing PhantomJS..."
   brew_install_or_upgrade 'phantomjs'
 
 println "Installing MySQL 5.6..."
-  brew tap homebrew/versions
-  brew_install_or_upgrade 'homebrew/versions/mysql56'
+  brew_install_or_upgrade 'mysql@5.6'
 
 println "Installing ImageMagick, to crop and resize images..."
   brew_install_or_upgrade 'imagemagick'
@@ -156,7 +152,8 @@ println "Configuring Bundler for faster, parallel gem installation..."
   bundle config --global jobs $((number_of_cores - 1))
 
 println "Installing Heroku CLI client..."
-  brew_install_or_upgrade 'heroku-toolbelt'
+  brew tap heroku/brew
+  brew_install_or_upgrade 'heroku/brew/heroku'
 
 println "Installing the heroku-config plugin to pull config variables locally to be used as ENV variables..."
   heroku plugins:install heroku-config
