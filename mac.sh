@@ -101,7 +101,8 @@ println "Installing QT, used by Capybara Webkit for integration testing..."
   brew_install_or_upgrade 'qt'
 
 println "Installing ChromeDriver, to drive Chrome via Selenium..."
-  brew_install_or_upgrade 'chromedriver'
+  brew tap homebrew/cask
+  brew cask install chromedriver
 
 println "Installing Git..."
   brew_install_or_upgrade 'git'
