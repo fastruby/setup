@@ -80,7 +80,7 @@ println "Installing Spotify..."
   brew cask install spotify
 
 println "Installing Postgres..."
-  brew_install_or_upgrade 'postgres' '--no-python'
+  brew_install_or_upgrade 'postgres'
 
 println "Installing Postgres.app..."
   brew cask install postgres
@@ -158,3 +158,4 @@ println "Installing Heroku CLI client..."
 
 println "Installing the heroku-config plugin to pull config variables locally to be used as ENV variables..."
   heroku plugins:install heroku-config
+
