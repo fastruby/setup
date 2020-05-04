@@ -88,9 +88,6 @@ println "Installing Postgres.app..."
 println "Installing Redis..."
   brew_install_or_upgrade 'redis'
 
-println "Installing PhantomJS..."
-  brew_install_or_upgrade 'phantomjs'
-
 println "Installing MySQL 5.6..."
   brew_install_or_upgrade 'mysql@5.6'
 
@@ -158,4 +155,3 @@ println "Installing Heroku CLI client..."
 
 println "Installing the heroku-config plugin to pull config variables locally to be used as ENV variables..."
   heroku plugins:install heroku-config
-
