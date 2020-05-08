@@ -94,9 +94,6 @@ println "Installing MySQL 5.6..."
 println "Installing ImageMagick, to crop and resize images..."
   brew_install_or_upgrade 'imagemagick'
 
-println "Installing QT, used by Capybara Webkit for integration testing..."
-  brew_install_or_upgrade 'qt'
-
 println "Installing ChromeDriver, to drive Chrome via Selenium..."
   brew tap homebrew/cask
   brew cask install chromedriver
