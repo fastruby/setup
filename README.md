@@ -19,15 +19,17 @@ The script will install:
 * postgres
 * redis
 * rvm
-* ruby-2.1.7
+* ruby-2.6.6
+* docker
+* docker-compose
 * nvm
-* qt
 * chromedriver
 * github desktop
 * heroku-toolbelt
 * spotify
 * slack
 * firefox
+* atom
 
 # FAQ
 
