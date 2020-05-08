@@ -101,6 +101,12 @@ println "Installing ChromeDriver, to drive Chrome via Selenium..."
   brew tap homebrew/cask
   brew cask install chromedriver
 
+println "Installing Docker..."
+  brew cask install docker
+
+println "Installing docker-compose..."
+  brew_install_or_upgrade 'docker-compose'
+
 println "Installing Git..."
   brew_install_or_upgrade 'git'
 
