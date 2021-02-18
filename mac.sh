@@ -8,6 +8,10 @@ if [ ! -f "$HOME/.bashrc" ]; then
   touch $HOME/.bashrc
 fi
 
+if [[ `uname -m` == 'arm64' ]]; then
+  softwareupdate --install-rosetta
+fi
+
 println() {
   printf "%b\n" "$1"
 }
@@ -62,28 +66,28 @@ println "Updating Homebrew formulas..."
 brew update
 
 println "Installing iTerm2..."
-  brew cask install iterm2
+  brew reinstall --cask iterm2
 
 println "Installing Firefox..."
-  brew cask install firefox
+  brew reinstall --cask firefox
 
 println "Installing Github..."
-  brew cask install github
+  brew reinstall --cask github
 
 println "Installing Atom..."
-  brew cask install atom
+  brew reinstall --cask atom
 
 println "Installing Slack..."
-  brew cask install slack
+  brew reinstall --cask slack
 
 println "Installing Spotify..."
-  brew cask install spotify
+  brew reinstall --cask spotify
 
 println "Installing Postgres..."
   brew_install_or_upgrade 'postgres'
 
 println "Installing Postgres.app..."
-  brew cask install postgres
+  brew reinstall --cask postgres
 
 println "Installing Redis..."
   brew_install_or_upgrade 'redis'
@@ -96,10 +100,10 @@ println "Installing ImageMagick, to crop and resize images..."
 
 println "Installing ChromeDriver, to drive Chrome via Selenium..."
   brew tap homebrew/cask
-  brew cask install chromedriver
+  brew reinstall --cask chromedriver
 
 println "Installing Docker..."
-  brew cask install docker
+  brew reinstall --cask docker
 
 println "Installing docker-compose..."
   brew_install_or_upgrade 'docker-compose'
@@ -138,7 +142,7 @@ println "Upgrading and linking OpenSSL..."
   brew_install_or_upgrade 'openssl'
   brew unlink openssl && brew link openssl --force
 
-ruby_version="2.6.6"
+ruby_version="2.7.2"
 
 println "Installing Ruby $ruby_version..."
   rvm install "$ruby_version"
