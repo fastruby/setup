@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+if [ ! -f "$HOME/.zshrc" ]; then
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+fi
+
 if [[ ! -d "$HOME/.bin/" ]]; then
   mkdir "$HOME/.bin"
 fi
@@ -50,13 +54,16 @@ brew_is_upgradable() {
 
 if ! command -v brew &>/dev/null; then
   println "The missing package manager for OS X"
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
   if ! grep -qs "recommended by brew doctor" ~/.bashrc; then
     println "Put Homebrew location earlier in PATH..."
       printf '\n# recommended by brew doctor\n' >> ~/.bashrc
       printf 'export PATH="/usr/local/bin:$PATH"\n' >> ~/.bashrc
       export PATH="/usr/local/bin:$PATH"
+
+    (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> ~/.zshrc
+    eval "$(/opt/homebrew/bin/brew shellenv)"
   fi
 else
   println "Homebrew already installed. Skipping..."
@@ -74,32 +81,16 @@ println "Installing Firefox..."
 println "Installing Github..."
   brew reinstall --cask github
 
-println "Installing Atom..."
-  brew reinstall --cask atom
-
 println "Installing Slack..."
   brew reinstall --cask slack
 
-println "Installing Spotify..."
-  brew reinstall --cask spotify
-
-println "Installing Postgres..."
-  brew_install_or_upgrade 'postgres'
-
-println "Installing Postgres.app..."
-  brew reinstall --cask postgres
-
 println "Installing Redis..."
   brew_install_or_upgrade 'redis'
-
-println "Installing MySQL 5.6..."
-  brew_install_or_upgrade 'mysql@5.6'
 
 println "Installing ImageMagick, to crop and resize images..."
   brew_install_or_upgrade 'imagemagick'
 
 println "Installing ChromeDriver, to drive Chrome via Selenium..."
-  brew tap homebrew/cask
   brew reinstall --cask chromedriver
 
 println "Installing Docker..."
@@ -111,14 +102,14 @@ println "Installing docker-compose..."
 println "Installing Git..."
   brew_install_or_upgrade 'git'
 
-node_version="0.10.40"
+node_version="18.20.2"
 
 println "Installing NVM, Node.js, and NPM, for running apps and installing JavaScript packages..."
   brew_install_or_upgrade 'nvm'
 
-  if ! grep -qs 'source $(brew --prefix nvm)/nvm.sh' ~/.bashrc; then
-    printf 'export PATH="$PATH:/usr/local/lib/node_modules"\n' >> ~/.bashrc
-    printf 'source $(brew --prefix nvm)/nvm.sh\n' >> ~/.bashrc
+  if ! grep -qs 'source $(brew --prefix nvm)/nvm.sh' ~/.zshrc; then
+    printf 'export PATH="$PATH:/usr/local/lib/node_modules"\n' >> ~/.zshrc
+    printf 'source $(brew --prefix nvm)/nvm.sh\n' >> ~/.zshrc
   fi
 
   source $(brew --prefix nvm)/nvm.sh
@@ -127,29 +118,20 @@ println "Installing NVM, Node.js, and NPM, for running apps and installing JavaS
   println "Setting $node_version as the global default nodejs..."
   nvm alias default "$node_version"
 
-if ! command -v rvm &>/dev/null; then
-
-  println "Installing rvm, to change Ruby versions..."
-  curl -sSL https://get.rvm.io | bash -s stable --ruby --auto-dotfiles
-  source ~/.rvm/scripts/rvm
-
+if ! command -v rbenv &>/dev/null; then
+  println "Installing rbenv, to change Ruby versions..."
+  brew_install_or_upgrade 'rbenv' 
+  brew_install_or_upgrade 'ruby-build'
+  echo 'eval "$(~/.rbenv/bin/rbenv init - zsh)"' >> ~/.zshrc
+  source ~/.zshrc
 else
-
-  println "Rvm already installed. Skipping..."
+  println "rbenv already installed. Skipping..."
 fi
 
-println "Upgrading and linking OpenSSL..."
-  brew_install_or_upgrade 'openssl'
-  brew unlink openssl && brew link openssl --force
-
-ruby_version="2.7.2"
+ruby_version="3.2.3"
 
 println "Installing Ruby $ruby_version..."
-  rvm install "$ruby_version"
-  rvm use "$ruby_version"
-
-println "Updating to latest Rubygems version..."
-  gem update --system
+  rbenv install "$ruby_version"
 
 println "Configuring Bundler for faster, parallel gem installation..."
   gem install bundler --no-ri --no-rdoc
@@ -157,8 +139,4 @@ println "Configuring Bundler for faster, parallel gem installation..."
   bundle config --global jobs $((number_of_cores - 1))
 
 println "Installing Heroku CLI client..."
-  brew tap heroku/brew
-  brew_install_or_upgrade 'heroku/brew/heroku'
-
-println "Installing the heroku-config plugin to pull config variables locally to be used as ENV variables..."
-  heroku plugins:install heroku-config
+  brew tap heroku/brew && brew install heroku
